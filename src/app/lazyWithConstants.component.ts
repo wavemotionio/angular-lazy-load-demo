@@ -8,7 +8,7 @@ export const myStrings = {
 
 @Component({
   template: `
-    <p>lazy3 component</p>
+    <p>Lazy component with constants loaded.</p>
   `
 })
-export class Lazy3Component {}
+export class LazyWithConstantsComponent {}

@@ -8,11 +8,13 @@ import {
   selector: "app-root",
   template: `
     <div>
-      <div>Hello World! This is the {{ title }} app.</div>
-      <button (click)="getLazy1()">lazy 1</button>
-      <button (click)="getLazy2()">lazy 2</button>
-      <button (click)="getLazy3()">lazy 3</button>
-      <button (click)="getLazy4()">lazy 4</button>
+      
+      <div><button (click)="getLazySimpleComponent()">lazy load simple component</button></div>
+      <div><button (click)="getLazyWithConstantsComponent()">lazy load component with constants</button></div>
+      
+      <div><button (click)="getLazyImportingConstantsFromSiblingComponent()">lazy load component that imports constants from LazyWithConstantsComponent</button></div>
+      <div><button (click)="getLazyImportingConstantsFromConstantsFileComponent()">lazy load component that imports constants from newstrings.constant.ts</button></div>
+    
     </div>
   `
 })
@@ -24,35 +26,35 @@ export class AppComponent {
     private cfr: ComponentFactoryResolver
   ) {}
 
-  async getLazy1() {
+  async getLazySimpleComponent() {
     this.viewContainerRef.clear();
-    const { Lazy1Component } = await import("./lazy1.component");
+    const { LazySimpleComponent } = await import("./lazySimple.component");
     this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy1Component)
+      this.cfr.resolveComponentFactory(LazySimpleComponent)
     );
   }
 
-  async getLazy2() {
+  async getLazyWithConstantsComponent() {
     this.viewContainerRef.clear();
-    const { Lazy2Component } = await import("./lazy2.component");
+    const { LazyWithConstantsComponent } = await import("./lazyWithConstants.component");
     this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy2Component)
+      this.cfr.resolveComponentFactory(LazyWithConstantsComponent)
     );
   }
 
-  async getLazy3() {
+  async getLazyImportingConstantsFromSiblingComponent() {
     this.viewContainerRef.clear();
-    const { Lazy3Component } = await import("./lazy3.component");
+    const { LazyImportingConstantsFromSiblingComponent } = await import("./lazyImportingConstantsFromSibling.component");
     this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy3Component)
+      this.cfr.resolveComponentFactory(LazyImportingConstantsFromSiblingComponent)
     );
   }
 
-  async getLazy4() {
+  async getLazyImportingConstantsFromConstantsFileComponent() {
     this.viewContainerRef.clear();
-    const { Lazy4Component } = await import("./lazy4.component");
+    const { LazyImportingConstantsFromConstantsFileComponent } = await import("./lazyImportingConstantsFromConstantsFile.component");
     this.viewContainerRef.createComponent(
-      this.cfr.resolveComponentFactory(Lazy4Component)
+      this.cfr.resolveComponentFactory(LazyImportingConstantsFromConstantsFileComponent)
     );
   }
 }

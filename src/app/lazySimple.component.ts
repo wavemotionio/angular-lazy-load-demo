@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
   template: `
-    <p>lazy1 component</p>
+    <p>Lazy simple component loaded.</p>
   `
 })
-export class Lazy1Component {}
+export class LazySimpleComponent {}
