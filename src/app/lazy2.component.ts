@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Lazy2aComponent } from './lazy2a.component';
 import { Lazy2bComponent } from './lazy2b.component';
+import { newStrings } from "./newstrings.constant";
 
 @Component({
   template: `
@@ -16,6 +17,7 @@ import { Lazy2bComponent } from './lazy2b.component';
 })
 export class Lazy2Component implements OnInit {
   // @ViewChild("childContainer", { read: ViewContainerRef }) container;
+  anotherStringToDisplay: string;
 
   constructor(
     private viewContainerRef: ViewContainerRef,
@@ -28,5 +30,7 @@ export class Lazy2Component implements OnInit {
     this.viewContainerRef.clear();
     this.viewContainerRef.createComponent(componentFactorya);
     this.viewContainerRef.createComponent(componentFactoryb);
+
+    this.anotherStringToDisplay = newStrings.string2;
   }
 }
